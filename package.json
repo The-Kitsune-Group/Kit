@@ -1,0 +1,32 @@
+{
+  "name": "kit",
+  "version": "1.0.0",
+  "description": "Homosexual moderation bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Kitsune-Group/Kit.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "zenith"
+  ],
+  "author": "jaezudev, kitsune667 (on behalf of The Kitsune Group & Nekosoft)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/The-Kitsune-Group/Kit/issues"
+  },
+  "homepage": "https://github.com/The-Kitsune-Group/Kit#readme",
+  "dependencies": {
+    "death": "^1.1.0",
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.56.0"
+  }
+}
