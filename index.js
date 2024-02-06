@@ -1,6 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, Intents, Permissions } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const dotenv = require('dotenv');
 const ON_DEATH = require('death');
 
@@ -12,7 +12,7 @@ ON_DEATH(function(signal, err) {
 });
 
 const client = new Client({
-	intents: [GatewayIntentBits.Guilds]
+	intents: [GatewayIntentBits.Guilds],
 });
 
 client.once(Events.ClientReady, readyClient => {

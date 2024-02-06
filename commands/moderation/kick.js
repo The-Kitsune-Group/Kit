@@ -10,12 +10,12 @@ module.exports = {
 		const user = interaction.options.getUser('user');
 		const reason = interaction.options.getString('reason');
 		const guild = 'Azerbaijan & South Africa Cozy Corner';
-		if(interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
-			if(!reason) {
+		if (interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
+			if (!reason) {
 				try {
 					await user.send('You were kicked from ' + guild);
 				}
-				catch(err) {
+				catch (err) {
 					console.error('While kick occurr "Error ' + err.rawError.code + ': ' + err.rawError.message + '"');
 				}
 				await interaction.guild.members.kick(user);
@@ -26,7 +26,7 @@ module.exports = {
 				try {
 					await user.send('You were Kicked from ' + guild + ' for the following reason:\n' + reason);
 				}
-				catch(err) {
+				catch (err) {
 					console.error('While kick occurr "Error ' + err.rawError.code + ': ' + err.rawError.message + '"');
 				}
 				await interaction.guild.members.kick(user, [0, reason ]);
