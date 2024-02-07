@@ -3,15 +3,19 @@ const { SlashCommandBuilder, PermissionsBitField } = require('discord.js');
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('moveit')
-		.setDescription('MoveItToSeriousChannel ahh command')
-		.addUserOption(option => option.setName('user').setDescription('User to ban').setRequired(true)),
+		.setDescription('Shouts move message')
+		.addUserOption(option => option.setName('user').setDescription('User to be yelled at').setRequired(true))
+			.addStringOption(option => option.setName('reason').setDescription('Reason for shout')),
 	async execute(interaction) {
 		const user = interaction.options.getUser('user');
+		const offender = interaction.guild.members.fetch({ user, force: true });
+		const reason = interaction.options.getString('reason');
 		const perpetrator = interaction.user;
 		if (user.id == 1203405947951775765n || user.id == 1203455871028432896n) {
 			await interaction.reply(`Ha ha... very funny, <@!${perpetrator.id}>.`);
 		}
 		else if (interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
+			(reason) ? await offender.timeout(30*1000, reason) : await offender.timeout(30*1000);
 			await interaction.reply(`System Message - <@${user.id}>\`\`\`
    __ ________  ____═════════════════╗
   / // / __/\\ \\/ / /    This is a    ║

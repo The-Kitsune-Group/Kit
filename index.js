@@ -1,13 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, ActivityType } = require('discord.js');
 const dotenv = require('dotenv');
 const ON_DEATH = require('death');
 
 dotenv.config();
 
 ON_DEATH(function(signal, err) {
-	console.log('[SIGNAL=' + signal + ';ERROR=' + err + '].BYE()');
+	console.log(`[SIGNAL=${signal};ERROR=${err}].BYE()`);
 	client.destroy();
 });
 
@@ -17,7 +17,14 @@ const client = new Client({
 
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Allahu Akbar! Logged in as "${readyClient.user.tag}" and ready to recite the Quran`);
-	client.user.setActivity(String('women <3'), { type: 'PLAYING' });
+	client.user.setPresence({
+		activities: [{
+			name: `Fenc`,
+			state: `eeeeeeee yipyipyipyipyip`,
+			type: ActivityType.Playing,
+		}],
+		status: 'idle',
+	});
 });
 
 client.commands = new Collection();
@@ -36,7 +43,7 @@ for (const folder of commandFolders) {
 			client.commands.set(command.data.name, command);
 		}
 		else {
-			console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
+			console.warn(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`);
 		}
 	}
 }
