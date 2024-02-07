@@ -18,7 +18,7 @@ module.exports = {
  / _  / _/   \\  /_/      warning!    ║
 /_//_/___/   /_(_)                   ║
 ║ If you wish to continue this topic ║
-║ move to #serious-stuff or to DMS!  ║
+║ move to #serious-stuff or to DMs!  ║
 ╚════════════════════════════════════╝\`\`\`This incident will be logged.
 <#990353251452981328>
 For details, please speak with <@!${perpetrator.id}> or ping the <@&976679611851223081>/<@&882443822498467840> if you feel there was an issue.`);
