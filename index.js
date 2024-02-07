@@ -19,8 +19,8 @@ client.once(Events.ClientReady, readyClient => {
 	console.log(`Allahu Akbar! Logged in as "${readyClient.user.tag}" and ready to recite the Quran`);
 	client.user.setPresence({
 		activities: [{
-			name: `Fenc`,
-			state: `eeeeeeee yipyipyipyipyip`,
+			name: 'Fenc',
+			state: 'eeeeeeee yipyipyipyipyip',
 			type: ActivityType.Playing,
 		}],
 		status: 'idle',
