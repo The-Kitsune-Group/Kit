@@ -14,6 +14,9 @@ module.exports = {
 		if (user.id == 1203405947951775765n || user.id == 1203455871028432896n) {
 			await interaction.reply(`Ha ha... very funny, <@!${perpetrator.id}>.`);
 		}
+		else if (user.id == perpetrator.id) {
+			await interaction.reply('I think you\'re supposed to know the rules, don\'t you?');
+		}
 		else if (interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
 			await interaction.guild.members.fetch({ user, force: true })
 				.then((member) => {

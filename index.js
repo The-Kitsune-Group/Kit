@@ -7,7 +7,7 @@ const ON_DEATH = require('death');
 dotenv.config();
 
 ON_DEATH(function(signal, err) {
-	console.log(`[SIGNAL=${signal};ERROR=${err}].BYE()`);
+	console.log(`Quit because of ${err}`);
 	client.destroy();
 });
 
@@ -16,14 +16,14 @@ const client = new Client({
 });
 
 client.once(Events.ClientReady, readyClient => {
-	console.log(`Allahu Akbar! Logged in as "${readyClient.user.tag}" and ready to recite the Quran`);
+	console.log(`Login "${readyClient.user.tag}" and running`);
 	client.user.setPresence({
 		activities: [{
-			name: 'Fenc',
-			state: 'eeeeeeee yipyipyipyipyip',
+			name: 'Kit-Unstable',
+			state: 'About as stable as my sanity',
 			type: ActivityType.Playing,
 		}],
-		status: 'idle',
+		status: 'online',
 	});
 });
 
