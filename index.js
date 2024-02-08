@@ -12,7 +12,7 @@ ON_DEATH(function(signal, err) {
 });
 
 const client = new Client({
-	intents: [GatewayIntentBits.Guilds],
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
 });
 
 client.once(Events.ClientReady, readyClient => {
