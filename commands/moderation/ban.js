@@ -32,7 +32,7 @@ module.exports = {
 				.then((member) => {
 					try {
 						member.send(banTxt)
-							.then(message => `BanEvent: Pre-ban Notice sent to ${target.username}`)
+							.then(`BanEvent: Pre-ban Notice sent to ${target.username}`);
 					}
 					catch (err) {
 						console.error(`BanEvent Error: Pre-ban notice failed with code ${err.rawError.code}.`);
