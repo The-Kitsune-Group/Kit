@@ -20,7 +20,7 @@ client.once(Events.ClientReady, readyClient => {
 	client.user.setPresence({
 		activities: [{
 			name: 'Kit-Unstable',
-			state: 'About as stable as my sanity',
+			state: 'Mentally bashing my head against the wall',
 			type: ActivityType.Playing,
 		}],
 		status: 'online',

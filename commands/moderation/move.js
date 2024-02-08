@@ -22,7 +22,6 @@ module.exports = {
 			await interaction.guild.members.fetch(target.id)
 				.then((member) => {
 					try {
-						console.log(member);
 						member.timeout(30 * 1000, reason);
 						interaction.editReply(`System Message - <@${target.id}>\`\`\`╔═════════════════════════════════════╗
 ║  == System Message Information ==   ║
@@ -34,8 +33,8 @@ module.exports = {
 ║ move to #serious-stuff or to DMs!   ║
 ╚═════════════════════════════════════╝\`\`\`Please move to <#990353251452981328>. This incident will be logged.
 For details, please speak with <@!${perpetrator.id}> or ping the <@&976679611851223081>/<@&882443822498467840> if you feel there was an issue.`);
-						console.log(`WarnEvent: ${target.username}#${target.discriminator} warned by ${perpetrator.username}#${perpetrator.discriminator} for reason ${reason}`);
-						interaction.followUp({ content: ':thumbsup:', ephemeral: true });
+						console.log(`WarnEvent: ${target.username}#${target.discriminator} warned by ${perpetrator.username}#${perpetrator.discriminator} for reason "${reason}"`);
+						// interaction.followUp({ content: ':thumbsup:', ephemeral: true });
 					}
 					catch (error) {
 						console.error(`WarnEvent Error: Warn failed. ${error}`);
