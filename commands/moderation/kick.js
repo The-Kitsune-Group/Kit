@@ -9,7 +9,7 @@ module.exports = {
 	async execute(interaction) {
 		const perpetrator = interaction.member;
 		const target = interaction.options.getUser('user');
-		let userKickable = false;
+		let targetKickable = false;
 		let reason = interaction.options.getString('reason');
 		if (!reason) reason = 'No reason specified.';
 		const kickTxt = `# Connection closed!
@@ -18,9 +18,9 @@ module.exports = {
 > Issuing staff - <@!${perpetrator.id}>
 > Timeframe - 24 hours (not implemented yet)
 * Wait until time has passed, then come again or something idk`;
-		await interaction.guild.members.fetch({ target, force: true })
+		await interaction.guild.members.fetch(target, { force: true })
 			.then((member) => {
-				userKickable = member.kickable;
+				targetKickable = member.kickable;
 			})
 			.catch(error => console.error(`KickEvent Error: Unable to determine whether or not user is kickable. ${error}`));
 		if (target.id == 1203405947951775765n || target.id == 1203455871028432896n) {
@@ -29,7 +29,7 @@ module.exports = {
 		else if (target.id == perpetrator.id) {
 			await interaction.reply({ content: 'You can\'t kick yourself, idiot.', ephemeral: true });
 		}
-		else if (!userKickable) {
+		else if (!targetKickable) {
 			await interaction.reply({ content: 'Unable to kick this user.', ephemeral: true });
 		}
 		else if (interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
