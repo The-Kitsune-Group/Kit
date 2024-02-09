@@ -10,14 +10,15 @@ module.exports = {
 		const perpetrator = interaction.member;
 		const target = interaction.options.getUser('user');
 		let targetKickable = false;
+		const dateUnixNow = Math.floor(Date.now() / 1000
 		let reason = interaction.options.getString('reason');
 		if (!reason) reason = 'No reason specified.';
 		reason += '[rm]';
 		const kickTxt = `# Connection closed!
-* You have been temporarily yeeted lmao
+* You have been temporarily yeeted
 > Reasoning - ${reason.replaceAll('[rm]', '')}
 > Issuing staff - <@!${perpetrator.id}>
-> Timeframe - 24 hours (not implemented yet)
+> Timeframe - <t:${dateUnixNow + 86400}:R>
 * Wait until time has passed, then come again or something idk`;
 		await interaction.guild.members.fetch(target, { force: true })
 			.then((member) => {
