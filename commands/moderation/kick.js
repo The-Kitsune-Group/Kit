@@ -12,9 +12,10 @@ module.exports = {
 		let targetKickable = false;
 		let reason = interaction.options.getString('reason');
 		if (!reason) reason = 'No reason specified.';
+		reason += '[rm]';
 		const kickTxt = `# Connection closed!
 * You have been temporarily yeeted lmao
-> Reasoning - ${reason}
+> Reasoning - ${reason.replaceAll('[rm]', '')}
 > Issuing staff - <@!${perpetrator.id}>
 > Timeframe - 24 hours (not implemented yet)
 * Wait until time has passed, then come again or something idk`;
@@ -35,14 +36,14 @@ module.exports = {
 		else if (interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
 			try {
 				await target.send(kickTxt);
-				console.log(`KickEvent: Pre-kick Notice sent to ${target.tag}`);
+				console.log(`KickEvent: Pre-kick Notice sent to ${target.username}#${target.discriminator}`);
 			}
 			catch (error) {
 				console.error(`KickEvent Error ${error.rawError.code}: Pre-kick notice failed. ${error.rawError.message}`);
 			}
 			try {
-				await interaction.guild.members.kick(target, { reason: reason });
-				console.log(`KickEvent: ${target.tag} kicked by ${perpetrator.user.tag} for reason ${reason}`);
+				await interaction.guild.members.ban(target, { reason: reason });
+				console.log(`KickEvent: ${target.username}#${target.discriminator} kicked by ${perpetrator.user.username}#${perpetrator.user.discriminator} for reason "${reason.replaceAll('[rm]', '')}"`);
 				await interaction.reply({ content: 'Temporary Ban issued successfully! The user has been notifed of the ban and its reasoning.', ephemeral: true });
 			}
 			catch (error) {

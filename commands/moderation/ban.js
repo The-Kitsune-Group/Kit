@@ -53,14 +53,14 @@ module.exports = {
 				else {
 					await target.send(banTxt);
 				}
-				console.log(`BanEvent: Pre-ban Notice sent to ${target.tag}`);
+				console.log(`BanEvent: Pre-ban Notice sent to ${target.username}#${target.discriminator}`);
 			}
 			catch (error) {
 				console.error(`BanEvent Error ${error.rawError.code}: Pre-ban notice failed. ${error.rawError.message}`);
 			}
 			try {
 				await interaction.guild.members.ban(target, { reason: reason });
-				console.log(`BanEvent: ${target.tag} banned by ${perpetrator.user.tag} for reason ${reason}`);
+				console.log(`BanEvent: ${target.username}#${target.discriminator} banned by ${perpetrator.username}#${perpetrator.discriminator} for reason "${reason}"`);
 				await interaction.reply({ content: 'Permanent Ban issued successfully! The user shouldn\'t return now.', ephemeral: true });
 			}
 			catch (error) {

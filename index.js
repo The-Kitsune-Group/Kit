@@ -12,7 +12,7 @@ ON_DEATH(function(signal, err) {
 });
 
 const client = new Client({
-	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers],
+	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildModeration],
 });
 
 client.commands = new Collection();
