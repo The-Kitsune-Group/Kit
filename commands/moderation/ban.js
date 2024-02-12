@@ -18,18 +18,18 @@ module.exports = {
 		if (!reason && banEvasion) reason = 'Ban evasion';
 		if (!reason) reason = 'No reason specified.';
 		let banTxt = `# Connection terminated!
-* You were removed for violating the rules.
-> Reasoning - ${reason}
-> Issuing staff - <@!${perpetrator.id}>
-> Timeframe - Permanent`;
+			* You were removed for violating the rules.
+			> Reasoning - ${reason}
+			> Issuing staff - <@!${perpetrator.id}>
+			> Timeframe - Permanent`;
 		const banEvasionTxt = `# Connection terminated!
-* Please tell me you know what a ban is... Do. Not. Return. PERIOD.
-> Reasoning - ${reason}
-> Issuing staff - <@!${perpetrator.id}>
-> Timeframe - Permanent
-* Your IP was logged for obvious reasons. Please note that you also lost your ability to appeal your removal, and you will not be allowed back in. Ever.`;
+			* Please tell me you know what a ban is... Do. Not. Return. PERIOD.
+			> Reasoning - ${reason}
+			> Issuing staff - <@!${perpetrator.id}>
+			> Timeframe - Permanent
+			* Your IP was logged for obvious reasons. Please note that you also lost your ability to appeal your removal, and you will not be allowed back in. Ever.`;
 		const appealTxt = `
-* You may appeal by reaching out to <@!${perpetrator.id}> (recommended) or by filling out [this form](https://docs.google.com/forms/d/e/1FAIpQLSclGzlmTRNfcjgy9vYUG69SjmzBh2wIhmlHdCwU8T98p3eY-w/viewform).`;
+			* You may appeal by reaching out to <@!${perpetrator.id}> (recommended) or by filling out [this form](https://docs.google.com/forms/d/e/1FAIpQLSclGzlmTRNfcjgy9vYUG69SjmzBh2wIhmlHdCwU8T98p3eY-w/viewform).`;
 		if (appealable) banTxt += appealTxt;
 		await interaction.guild.members.fetch(target, { force: true })
 			.then((member) => {

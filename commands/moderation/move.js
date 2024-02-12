@@ -32,16 +32,17 @@ module.exports = {
 				.then((member) => {
 					try {
 						member.timeout(30 * 1000, reason);
-						interaction.editReply(`System Message - <@${target.id}>\`\`\`╔═════════════════════════════════════╗
-║  == System Message Information ==   ║
-║   __ ________  ____                 ║
-║  / // / __/\\ \\/ / /    This is a    ║
-║ / _  / _/   \\  /_/      warning!    ║
-║/_//_/___/   /_(_)                   ║
-║ If you wish to continue this topic, ║
-║ move to #serious-stuff or to DMs!   ║
-╚═════════════════════════════════════╝\`\`\`Please move to <#990353251452981328>. This incident will be logged.
-For details, please speak with <@!${perpetrator.id}> or ping the <@&976679611851223081>/<@&882443822498467840> if you feel there was an issue.`);
+						interaction.editReply(`System Message - <@${target.id}>\`\`\`
+						╔═════════════════════════════════════╗
+						║  == System Message Information ==   ║
+						║   __ ________  ____                 ║
+						║  / // / __/\\ \\/ / /    This is a  ║
+						║ / _  / _/   \\  /_/      warning!   ║
+						║/_//_/___/   /_(_)                   ║
+						║ If you wish to continue this topic, ║
+						║ move to #serious-stuff or to DMs!   ║
+						╚═════════════════════════════════════╝\`\`\`Please move to <#990353251452981328>. This incident will be logged.
+						For details, please speak with <@!${perpetrator.id}> or ping the <@&976679611851223081>/<@&882443822498467840> if you feel there was an issue.`);
 						console.log(`WarnEvent: ${target.username}#${target.discriminator} warned by ${perpetrator.username}#${perpetrator.discriminator} for reason "${reason}"`);
 					}
 					catch (error) {
