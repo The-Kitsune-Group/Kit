@@ -1,4 +1,6 @@
+const fs = require('node:fs');
 const { Events, ActivityType } = require('discord.js');
+import { banCron } from './index';
 
 module.exports = {
 	name: Events.ClientReady,
@@ -13,5 +15,13 @@ module.exports = {
 			}],
 			status: 'online',
 		});
+		fs.access('yeets.dat', fs.constants.F_OK, (error) => {
+			if (error) {
+				console.log('Database doesn\'t exist, creating one now...');
+				var data = new Map();
+				fs.writeFile('yeets.dat', data);
+			}
+		})
+		banCron.start();
 	},
 };

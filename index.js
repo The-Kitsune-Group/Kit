@@ -3,6 +3,7 @@ const path = require('node:path');
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const dotenv = require('dotenv');
 const ON_DEATH = require('death');
+const cron = require('node-cron');
 
 dotenv.config();
 
@@ -13,6 +14,12 @@ ON_DEATH(function(signal, err) {
 
 const client = new Client({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildModeration],
+});
+
+export const banCron = cron.schedule('*/10 * * * *', () => {
+	console.log('task ready');
+}, {
+	scheduled: false
 });
 
 client.commands = new Collection();
