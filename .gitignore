@@ -132,5 +132,5 @@ dist
 # Package lock
 package-lock.json
 
-# Datafile
-db.csv
+# Tempbans Datafile
+bans.json

@@ -16,7 +16,7 @@ module.exports = {
 			.then((member) => {
 				targetBannable = member.bannable;
 			})
-			.catch(error => console.error(`BanEvent Error: Unable to determine whether or not user is bannable. ${error}`));
+			.catch(error => console.error(`MoveEvent Error: Unable to determine whether or not user is movable. ${error}`));
 		if (target.id == 1203405947951775765n || target.id == 1203455871028432896n) {
 			await interaction.reply(`Ha ha... very funny, <@!${perpetrator.id}>.`);
 		}
@@ -24,7 +24,7 @@ module.exports = {
 			await interaction.reply('I think you\'re supposed to know the rules, don\'t you?');
 		}
 		else if (!targetBannable) {
-			await interaction.reply({ content: 'Unable to ban this user.', ephemeral: true });
+			await interaction.reply({ content: 'Unable to move this user.', ephemeral: true });
 		}
 		else if (interaction.member.permissions.has([PermissionsBitField.Flags.KickMembers, PermissionsBitField.Flags.BanMembers]) || interaction.member.id === interaction.guild.ownerId) {
 			await interaction.deferReply();
