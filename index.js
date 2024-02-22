@@ -10,6 +10,7 @@ dotenv.config();
 
 ON_DEATH(function(signal, err) {
 	console.log(`Quit because of ${err}`);
+	task.stop();
 	client.destroy();
 });
 
@@ -17,7 +18,7 @@ const client = new Client({
 	intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMembers, GatewayIntentBits.GuildModeration],
 });
 
-cron.schedule('*/10 * * * *', () => {
+const task = cron.schedule('*/10 * * * *', () => {
 	const bans = JSON.parse(fs.readFileSync('bans.json'));
 	const tmp_unba = checkUnban.getUnban();
 	let tmp_guil;

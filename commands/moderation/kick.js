@@ -18,8 +18,8 @@ module.exports = {
 * You have been temporarily yeeted
 > Reasoning - ${reason.replaceAll('[rm]', '')}
 > Issuing staff - <@!${perpetrator.id}>
-> Timeframe - <t:${dateUnixNow + 86400}:R>
-* Wait until time has passed, then come again or something idk`;
+> Timeframe - until <t:${dateUnixNow + 86400}:t>
+* Wait until the time has passed, after which you can join. Do not attempt to circumvent this ban or you will face consequences.`;
 		await interaction.guild.members.fetch(target, { force: true })
 			.then((member) => {
 				targetKickable = member.kickable;

@@ -1,6 +1,4 @@
-const fs = require('node:fs');
 const { Events, ActivityType } = require('discord.js');
-import { banCron } from './index';
 
 module.exports = {
 	name: Events.ClientReady,
@@ -10,18 +8,10 @@ module.exports = {
 		client.user.setPresence({
 			activities: [{
 				name: 'Kit-Unstable',
-				state: 'It fucking works',
+				state: 'DATAFILE WAHOO',
 				type: ActivityType.Playing,
 			}],
 			status: 'online',
 		});
-		fs.access('yeets.dat', fs.constants.F_OK, (error) => {
-			if (error) {
-				console.log('Database doesn\'t exist, creating one now...');
-				var data = new Map();
-				fs.writeFile('yeets.dat', data);
-			}
-		})
-		banCron.start();
 	},
 };
