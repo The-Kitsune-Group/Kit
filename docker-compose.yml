@@ -1,6 +1,7 @@
-version "3.3"
+version "3"
 
 services:
   kit:
+    image: jaezu/kit-docker
     build: .
     env_file: .env
