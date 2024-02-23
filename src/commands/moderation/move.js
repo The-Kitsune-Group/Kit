@@ -5,7 +5,9 @@ module.exports = {
 		.setName('moveit')
 		.setDescription('Shouts move message')
 		.addUserOption(option => option.setName('user').setDescription('User to be yelled at').setRequired(true))
-		.addStringOption(option => option.setName('reason').setDescription('Reason for yell')),
+		.addStringOption(option => option.setName('reason').setDescription('Reason for yell'))
+		.setDefaultMemberPermissions(PermissionsBitField.Flags.BanMembers & PermissionsBitField.Flags.KickMembers)
+		.setDMPermission(false),
 	async execute(interaction) {
 		const target = interaction.options.getUser('user');
 		const perpetrator = interaction.user;

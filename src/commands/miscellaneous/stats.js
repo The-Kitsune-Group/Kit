@@ -24,7 +24,7 @@ const infoMsg = new EmbedBuilder()
 		{ name: 'Network usage', value: netUsage.toString() + '%', inline: true },
 	)
 	.setTimestamp()
-	.setFooter({ text: 'Kit-Unstable', iconURL: 'https://raw.githubusercontent.com/The-Kitsune-Group/Kit/main/iconbitch.png' });
+	.setFooter({ text: 'Kit', iconURL: 'https://jaezu.net/trash/kit/iconbitch.png' });
 
 module.exports = {
 	data: new SlashCommandBuilder()

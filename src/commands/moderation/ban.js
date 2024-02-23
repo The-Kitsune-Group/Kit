@@ -7,16 +7,19 @@ module.exports = {
 		.addUserOption(option => option.setName('user').setDescription('User to ban').setRequired(true))
 		.addBooleanOption(option => option.setName('ban_evading').setDescription('If user is ban-evading').setRequired(true))
 		.addBooleanOption(option => option.setName('grant_appeal').setDescription('If ban is appealable').setRequired(true))
-		.addStringOption(option => option.setName('reason').setDescription('Reason for ban')),
+		.addStringOption(option => option.setName('reason').setDescription('Reason for ban'))
+		.setDefaultMemberPermissions(PermissionsBitField.Flags.BanMembers & PermissionsBitField.Flags.KickMembers)
+		.setDMPermission(false),
 	async execute(interaction) {
 		const target = interaction.options.getUser('user');
 		const perpetrator = interaction.member;
 		const banEvasion = interaction.options.getBoolean('ban_evading');
-		const appealable = interaction.options.getBoolean('grant_appeal');
+		let appealable = interaction.options.getBoolean('grant_appeal');
 		let targetBannable = false;
 		let reason = interaction.options.getString('reason');
 		if (!reason && banEvasion) reason = 'Ban evasion';
 		if (!reason) reason = 'No reason specified.';
+		if (banEvasion) appealable = false;
 		let banTxt = `# Connection terminated!
 * You were removed for violating the rules.
 > Reasoning - ${reason}
