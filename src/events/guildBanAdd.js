@@ -1,11 +1,17 @@
 const { Events } = require('discord.js');
 const fs = require('fs');
-const bans = JSON.parse(fs.readFileSync('bans.json'));
+let bans = [];
 const dateUnixNow = Math.floor(Date.now() / 1000);
 
 module.exports = {
 	name: Events.GuildBanAdd,
 	async execute(ban) {
+		try {
+			bans = JSON.parse(fs.readFileSync('bans.json'));
+		}
+		catch(error) {
+			console.error('No Bans.json')
+		}
 		await ban.guild.bans.fetch(ban.user, { force: true })
 			.then((yeet) => {
 				if (yeet.reason.includes('[rm]')) {
