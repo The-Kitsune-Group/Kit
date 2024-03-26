@@ -134,3 +134,6 @@ package-lock.json
 
 # Databases
 db/
+
+# Personal VSCode Settings
+.vscode/
